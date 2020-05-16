@@ -13,7 +13,7 @@ exports.get = (req, res, next) => {
             }).catch(e => {
                 res.status(400).send(e);
             });
-    };
+};
     
 exports.getBySlug = (req, res, next) => {
 //    Product.find({  // Retorna um array. Utilizar "findOne".
@@ -26,7 +26,7 @@ exports.getBySlug = (req, res, next) => {
             }).catch(e => {
                 res.status(400).send(e);
             });
-    };
+};
 
 exports.getById = (req, res, next) => {
     Product.findById(req.params.id)
@@ -35,9 +35,20 @@ exports.getById = (req, res, next) => {
             }).catch(e => {
                 res.status(400).send(e);
             });
-    };
+};
         
-
+exports.getByTag = (req, res, next) => {
+    Product.find({  // testar com "findOne" para um retorno, e para mais de um retorno. 
+                tags: req.params.tag,
+                active: true
+            }, 'title description slug price tags')
+            .then(data => {
+                res.status(200).send(data);
+            }).catch(e => {
+                res.status(400).send(e);
+            });
+};
+            
 exports.post = (req, res, next) => {
     // Opção 1.
     let product = new Product(req.body);

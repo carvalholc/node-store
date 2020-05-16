@@ -2,9 +2,13 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const app = express();
 const router = express.Router();
+
+// Conexão Banco de Dados
+mongoose.connect('mongodb+srv://mymatrix:mymatrix@mycluster0-62xea.mongodb.net/mymatrix');
 
 // Carrega as Rotas
 const indexRoute = require('./routes/index-route');

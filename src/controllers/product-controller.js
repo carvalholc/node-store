@@ -4,18 +4,31 @@ const mongoose = require('mongoose');
 const Product = mongoose.model('Product');
 
 exports.get = (req, res, next) => {
-//    Product.find({})
-    Product.find({
-                active: true
-            }, 'title slug price')
-           .then(data => {
-                res.status(200).send(data);
-            }).catch(e => {
-                res.status(400).send(e);
-            });
-};
-
-exports.post = (req, res, next) => {
+    //    Product.find({})
+        Product.find({
+                    active: true
+                }, 'title slug price')
+               .then(data => {
+                    res.status(200).send(data);
+                }).catch(e => {
+                    res.status(400).send(e);
+                });
+    };
+    
+exports.getBySlug = (req, res, next) => {
+//        Product.find({  // Retorna um array. Utilizar "findOne".
+        Product.findOne({
+            slug: req.params.slug,
+                    active: true
+                }, 'title description slug price tags')
+                .then(data => {
+                    res.status(200).send(data);
+                }).catch(e => {
+                    res.status(400).send(e);
+                });
+    };
+        
+        exports.post = (req, res, next) => {
     // Opção 1.
     let product = new Product(req.body);
     product.save()

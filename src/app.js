@@ -10,6 +10,9 @@ const router = express.Router();
 // Conexão Banco de Dados
 mongoose.connect('mongodb+srv://mymatrix:mymatrix@mycluster0-62xea.mongodb.net/mymatrix');
 
+// Carrega os Models
+const Product = require('./models/product');
+
 // Carrega as Rotas
 const indexRoute = require('./routes/index-route');
 const productRoute = require('./routes/product-route');

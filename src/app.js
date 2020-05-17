@@ -3,13 +3,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const config = require('./config');
 
 const app = express();
 const router = express.Router();
 
 // Conexão Banco de Dados
 //mongoose.connect('mongodb+srv://mymatrix:mymatrix@mycluster0-62xea.mongodb.net/mymatrix'); // aparece mensagens no console de "Deprecations"
-mongoose.connect('mongodb+srv://mymatrix:mymatrix@mycluster0-62xea.mongodb.net/mymatrix', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+mongoose.connect(config.connectionString, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 
 // Carrega os Models
 const Product = require('./models/product');

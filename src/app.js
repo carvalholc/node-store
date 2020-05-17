@@ -12,6 +12,7 @@ mongoose.connect('mongodb+srv://mymatrix:mymatrix@mycluster0-62xea.mongodb.net/m
 
 // Carrega os Models
 const Product = require('./models/product');
+const Customer = require('./models/customer');
 
 // Carrega as Rotas
 const indexRoute = require('./routes/index-route');
@@ -19,7 +20,6 @@ const productRoute = require('./routes/product-route');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
-
 
 app.use('/', indexRoute);
 app.use('/products', productRoute);

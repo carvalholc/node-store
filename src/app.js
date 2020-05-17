@@ -9,7 +9,7 @@ const app = express();
 const router = express.Router();
 
 // Conexão Banco de Dados
-//mongoose.connect('mongodb+srv://mymatrix:mymatrix@mycluster0-62xea.mongodb.net/mymatrix'); // aparece mensagens no console de "Deprecations"
+//mongoose.connect(config.connectionString); // aparece mensagens no console de "Deprecations"
 mongoose.connect(config.connectionString, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 
 // Carrega os Models

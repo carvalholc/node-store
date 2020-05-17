@@ -13,6 +13,7 @@ mongoose.connect('mongodb+srv://mymatrix:mymatrix@mycluster0-62xea.mongodb.net/m
 // Carrega os Models
 const Product = require('./models/product');
 const Customer = require('./models/customer');
+const Order = require('./models/order');
 
 // Carrega as Rotas
 const indexRoute = require('./routes/index-route');
